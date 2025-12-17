@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:north-pole-app-vapor}",
+            "name": "Debug NorthPoleAppVapor",
+            "target": "NorthPoleAppVapor",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug NorthPoleAppVapor"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:north-pole-app-vapor}",
+            "name": "Release NorthPoleAppVapor",
+            "target": "NorthPoleAppVapor",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release NorthPoleAppVapor"
+        }
+    ]
+}
