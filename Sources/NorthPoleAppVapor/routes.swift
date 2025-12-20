@@ -5,12 +5,12 @@ func routes(_ app: Application) throws {
 
     // Welcome message
     app.get { req in
-        "HO! HO! HO! Welcome to Santa's Naughty and Nice List API!"
+        return "HO! HO! HO! Welcome to Santa's Naughty and Nice List API!"
     }.description("Welcome message")
 
     // List of childrren
-    app.get("children") { req in
-        "Children List"
+    app.get("children") { req async throws in
+        try await Child.query(on: req.db).all()
     }.description("List of children in Santa's List")
 
     // Info on individual child
@@ -22,8 +22,9 @@ func routes(_ app: Application) throws {
     }.description("Info on an individual child in Santa's List")
 
     // Add child to list
-    app.post("chldren") { req in
-        return "Child added to list"
+    app.post("children") { req -> EventLoopFuture<Child> in
+        let child: Child = try req.content.decode(Child.self)
+        return child.create(on: req.db).map { child }
     }.description("Add a child to Santa's List")
 
     // Update indivdual child
@@ -41,6 +42,4 @@ func routes(_ app: Application) throws {
         }
         return "Child \(id) removed from list"
     }.description("Remove a child from Santa's List")
-
-    try app.register(collection: TodoController())
 }

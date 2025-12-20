@@ -1,12 +1,13 @@
 import Fluent
+import Vapor
 import struct Foundation.UUID
 import struct Foundation.Date
 
-final class Child: Model, @unchecked Sendable {
-    static let schema = "children"
+final class Child: Model, @unchecked Sendable, Content {
+    static let schema: String = "children"
     
-    @ID(key: .id)
-    var id: UUID?
+    @ID(custom: .id, generatedBy: .database)
+    var id: Int?
 
     @Field(key: "firstName")
     var firstName: String
@@ -15,7 +16,7 @@ final class Child: Model, @unchecked Sendable {
     var lastName: String
 
     @Field(key: "dayOfBirth")
-    var dayofBirth: Date
+    var dayOfBirth: Date
 
     @Field(key: "hometown")
     var hometown: String
@@ -25,11 +26,11 @@ final class Child: Model, @unchecked Sendable {
 
     init() { }
 
-    init(id: UUID? = nil, firstName: String, lastName: String, dayOfBirth: Date, hometown: String, isNaughty: Bool) {
+    init(id: Int? = nil, firstName: String, lastName: String, dayOfBirth: Date, hometown: String, isNaughty: Bool) {
         self.id = id
         self.firstName = firstName
         self.lastName = lastName
-        self.dayofBirth = dayOfBirth
+        self.dayOfBirth = dayOfBirth
         self.hometown = hometown
         self.isNaughty = isNaughty
     }
