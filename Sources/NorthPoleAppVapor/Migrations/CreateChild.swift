@@ -6,7 +6,7 @@ struct CreateChild: AsyncMigration {
             .field("id", .int, .identifier(auto: true))
             .field("firstName", .string, .required)
             .field("lastName", .string, .required)
-            .field("dayOfBirth", .datetime, .required)
+            .field("dateOfBirth", .datetime, .required)
             .field("hometown", .string, .required)
             .field("isNaughty", .bool, .required)
             .create()

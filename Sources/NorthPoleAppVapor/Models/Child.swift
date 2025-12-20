@@ -15,8 +15,8 @@ final class Child: Model, @unchecked Sendable, Content {
     @Field(key: "lastName")
     var lastName: String
 
-    @Field(key: "dayOfBirth")
-    var dayOfBirth: Date
+    @Field(key: "dateOfBirth")
+    var dateOfBirth: Date
 
     @Field(key: "hometown")
     var hometown: String
@@ -26,11 +26,11 @@ final class Child: Model, @unchecked Sendable, Content {
 
     init() { }
 
-    init(id: Int? = nil, firstName: String, lastName: String, dayOfBirth: Date, hometown: String, isNaughty: Bool) {
+    init(id: Int? = nil, firstName: String, lastName: String, dateOfBirth: Date, hometown: String, isNaughty: Bool) {
         self.id = id
         self.firstName = firstName
         self.lastName = lastName
-        self.dayOfBirth = dayOfBirth
+        self.dateOfBirth = dateOfBirth
         self.hometown = hometown
         self.isNaughty = isNaughty
     }
